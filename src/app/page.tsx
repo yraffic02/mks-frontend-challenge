@@ -8,14 +8,12 @@ import { useGlobalContext } from "@/context/store";
 export default function Home() {
   const { 
     isDrawerOpen,
-    handleDrawerOpen, 
     handleDrawerClose 
   } = useGlobalContext();
 
   return (
     <ContainerHome>
       <CardProduct />
-      <button onClick={handleDrawerOpen}>Open Drawer</button>
       <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose}>
         <p>This is the content inside the Drawer.</p>
         <button onClick={handleDrawerClose}>Close Drawer</button>
