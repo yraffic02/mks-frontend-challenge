@@ -10,4 +10,4 @@ export const DrawerContainer = styled.div<{ isOpen: boolean }>`
   
   transition: right 0.3s ease-in-out;
   box-shadow: -5px 0px 6px 0px #00000021;
-`;
+`
