@@ -7,7 +7,7 @@ export const ContainerCardItem = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 2rem;
+    border-radius: 0.9rem;
     gap: 0.4rem;
 
     box-shadow: 0px 2px 8px 0px #00000022;
@@ -59,5 +59,5 @@ export const ButtonTextCard = styled.button`
     font-size: 0.8rem;
     font-weight: 600;
 
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 0 0 0.9rem 0.9rem;
 `
