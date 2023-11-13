@@ -1,5 +1,4 @@
-"use client";
-import { useState } from "react";
+"use client"
 import { CardProduct } from "./components/Card";
 import { Drawer } from "./components/Cart";
 import { ContainerHome } from "./style";
@@ -14,10 +13,7 @@ export default function Home() {
   return (
     <ContainerHome>
       <CardProduct />
-      <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose}>
-        <p>This is the content inside the Drawer.</p>
-        <button onClick={handleDrawerClose}>Close Drawer</button>
-      </Drawer>
+      <Drawer /> 
     </ContainerHome>
   );
 }

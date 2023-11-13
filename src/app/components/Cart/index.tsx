@@ -1,16 +1,34 @@
-import { ReactNode } from "react";
-import { DrawerContainer } from "./style";
+import {
+  DrawerBody,
+  DrawerButtonClose,
+  DrawerButtonFinish,
+  DrawerContainer,
+  DrawerFooter,
+  DrawerHeaderContainer,
+  DrawerTitle,
+  DrawerTotalPrice,
+} from "./style";
+import { useGlobalContext } from "@/context/store";
 
-interface IDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}
+export const Drawer = () => {
+  const { isDrawerOpen, handleDrawerClose } = useGlobalContext();
 
-export const Drawer = ({ isOpen, onClose, children }: IDrawerProps) => {
   return (
-    <DrawerContainer isOpen={isOpen}>
-            {children}
+    <DrawerContainer isOpen={isDrawerOpen}>
+      <DrawerHeaderContainer>
+        <DrawerTitle>Carrinho de compras</DrawerTitle>
+        <DrawerButtonClose onClick={handleDrawerClose}>X</DrawerButtonClose>
+      </DrawerHeaderContainer>
+      <DrawerBody>
+
+      <DrawerFooter>
+        <DrawerTotalPrice>
+          <p>Total:</p>
+          <p>R$798</p>
+        </DrawerTotalPrice>
+        <DrawerButtonFinish>Finalizar Compra</DrawerButtonFinish>
+      </DrawerFooter>
+      </DrawerBody>
     </DrawerContainer>
-    );
+  );
 };
