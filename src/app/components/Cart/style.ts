@@ -11,6 +11,14 @@ export const DrawerContainer = styled.div<{ isOpen: boolean }>`
   transition: right 0.3s ease-in-out;
   box-shadow: -5px 0px 6px 0px #00000021;
   z-index: 9999;
+
+  @media (max-width: 800px) {
+    width: 80%;
+  }
+
+  @media (max-width: 800px) {
+    width: 95%;
+  }
 `
 
 export const DrawerHeaderContainer = styled.div`

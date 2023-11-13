@@ -14,6 +14,10 @@ export const CardCartContainer = styled.div`
   color: black;
   box-shadow: -2px 2px 10px 0px #0000000d;
   border-radius: 0.5rem;
+
+  @media (max-width: 560px){
+    flex-direction: column;
+  }
 `;
 
 export const CardCartTitle = styled.h2`
@@ -26,6 +30,10 @@ export const CardCartBody = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 0.3rem;
+
+  @media (max-width: 560px){
+    flex-direction: row;
+  }
 `;
 
 export const CardCartText = styled.p`
@@ -45,6 +53,11 @@ export const CardCartQtdProduct = styled.div`
   font-weight: 400;
 
   padding: 0.2rem;
+
+  @media (max-width: 560px){
+    width: 6rem;
+    font-size: 1.25rem;
+  }
 `;
 
 export const CardCartPrice = styled.h1`
@@ -53,6 +66,19 @@ export const CardCartPrice = styled.h1`
   font-weight: 700;
 
   color: black;
+
+  @media (max-width: 560px){
+    display: flex;
+  justify-content: center;
+  padding: 0.25rem 0.4rem;
+  border-radius: 0.3rem;
+
+  color: white;
+  background-color: #373737;
+  font-weight: 700;
+
+  white-space: nowrap;
+  }
 `;
 
 export const CardCartButtonClose = styled.button`
