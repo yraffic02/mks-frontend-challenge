@@ -15,6 +15,7 @@ export interface IProduct {
   description: string;
   photo: string;
   price: string;
+  quantity?: number; 
 }
 
 export const CardProduct = ({

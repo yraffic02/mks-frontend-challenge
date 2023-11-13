@@ -1,4 +1,4 @@
-import { CardCartProduct } from "./components";
+import { CardCartProduct, ICartProduct } from "./components";
 import {
   DrawerBody,
   DrawerButtonClose,
@@ -12,7 +12,7 @@ import {
 import { useGlobalContext } from "@/context/store";
 
 export const Drawer = () => {
-  const { isDrawerOpen, handleDrawerClose } = useGlobalContext();
+  const { isDrawerOpen, handleDrawerClose, cart, getTotalPrice } = useGlobalContext();
 
   return (
     <DrawerContainer isOpen={isDrawerOpen}>
@@ -21,11 +21,20 @@ export const Drawer = () => {
         <DrawerButtonClose onClick={handleDrawerClose}>X</DrawerButtonClose>
       </DrawerHeaderContainer>
       <DrawerBody>
-        <CardCartProduct />
+        {
+         cart.map((item)=>{
+          return(
+            <CardCartProduct
+             key={item.id}
+              {...item}
+            />
+          )
+         })
+        }
       <DrawerFooter>
         <DrawerTotalPrice>
           <p>Total:</p>
-          <p>R$798</p>
+          <p>R${getTotalPrice()}</p>
         </DrawerTotalPrice>
         <DrawerButtonFinish>Finalizar Compra</DrawerButtonFinish>
       </DrawerFooter>

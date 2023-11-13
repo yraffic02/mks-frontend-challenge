@@ -1,12 +1,45 @@
+import { useState } from "react";
 import Image from "next/image";
-import { CardCartBody, CardCartContainer, CardCartPrice, CardCartQtdProduct, CardCartText, CardCartTitle } from "./style";
+import {
+  CardCartBody,
+  CardCartContainer,
+  CardCartPrice,
+  CardCartQtdProduct,
+  CardCartText,
+  CardCartTitle,
+} from "./style";
+import { IProduct } from "../../Card";
 
-export const CardCartProduct = () => {
+export interface ICartProduct {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+}
+
+export const CardCartProduct = ({
+  id,
+  name,
+  price,
+  photo,
+}: IProduct) => {
+  const [quantity, setQuantity] = useState(1);
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
   return (
     <CardCartContainer>
       <Image
-        src="/items/apple-watch.jpg"
-        alt="Apple Watch"
+        src={photo}
+        alt={name}
         width={0}
         height={0}
         sizes="60vw"
@@ -17,18 +50,16 @@ export const CardCartProduct = () => {
           minWidth: "20%",
         }}
       />
-      <CardCartTitle>Apple Watch Series 4 GPS</CardCartTitle>
+      <CardCartTitle>{name}</CardCartTitle>
       <CardCartBody>
         <CardCartText>Qtd:</CardCartText>
         <CardCartQtdProduct>
-            <p>-</p>
-            <p>1</p>
-            <p>+</p>
+          <p onClick={decrementQuantity}>-</p>
+          <p>{quantity}</p>
+          <p onClick={incrementQuantity}>+</p>
         </CardCartQtdProduct>
       </CardCartBody>
-      <CardCartPrice>
-        R$399
-      </CardCartPrice>
+      <CardCartPrice>R${Number(price) * quantity}</CardCartPrice>
     </CardCartContainer>
   );
 };
