@@ -1,3 +1,4 @@
+import { CardCartProduct } from "./components";
 import {
   DrawerBody,
   DrawerButtonClose,
@@ -20,7 +21,7 @@ export const Drawer = () => {
         <DrawerButtonClose onClick={handleDrawerClose}>X</DrawerButtonClose>
       </DrawerHeaderContainer>
       <DrawerBody>
-
+        <CardCartProduct />
       <DrawerFooter>
         <DrawerTotalPrice>
           <p>Total:</p>

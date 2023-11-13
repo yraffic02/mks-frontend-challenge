@@ -48,6 +48,7 @@ export const DrawerBody = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow-y: auto;
   gap: 1.4rem;
 
