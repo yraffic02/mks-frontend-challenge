@@ -14,4 +14,5 @@ export const ContainerFooter = styled.header`
 
     font-size: 0.75rem;
     font-weight: 400;
+    z-index: 2;
 ` 

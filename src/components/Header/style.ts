@@ -11,6 +11,7 @@ export const ContainerHeader = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
 ` 
 
 export const ButtonHeader = styled.button`

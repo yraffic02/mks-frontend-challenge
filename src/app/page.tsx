@@ -6,7 +6,6 @@ import { ContainerCards, ContainerHome } from "./style";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [procutsArray, setPocutsArray] = useState<IProduct[]>([]);
   const { data: products } = useProductsQuery({
     page: 1,
     rows: 10,
@@ -14,21 +13,14 @@ export default function Home() {
     orderBy: "ASC",
   });
 
-  useEffect(() => {
-    if (products) {
-      setPocutsArray(products);
-    }
-  }, [products]);
-
-  console.log(procutsArray);
   return (
     <ContainerHome>
+      <Drawer />
       <ContainerCards>
-        {procutsArray?.map((item: IProduct) => {
+        {products?.map((item: IProduct) => {
           return <CardProduct key={item.id} {...item} />;
         })}
       </ContainerCards>
-      <Drawer />
     </ContainerHome>
   );
 }

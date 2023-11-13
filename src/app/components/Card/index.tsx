@@ -6,6 +6,7 @@ import {
     ContainerCardPrice,
     ContainerCardTitle
 } from "./style";
+import { useGlobalContext } from "@/context/store";
 
 export interface IProduct {
   id: number;
@@ -14,16 +15,28 @@ export interface IProduct {
   description: string;
   photo: string;
   price: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export const CardProduct = ({
+  id,
   name, 
   description,
   photo,
   price
 }: IProduct) => {
+  const { addToCart } = useGlobalContext();
+
+  const handleBuyClick = () => {
+    addToCart({
+      id,
+      name,
+      description,
+      photo,
+      price,
+      brand: "",
+    });
+  };
+
   return (
     <ContainerCardItem>
       <Image
@@ -31,7 +44,7 @@ export const CardProduct = ({
         alt="Apple Watch"
         width={0}
         height={0}
-        sizes="30vw"
+        sizes="10vw"
         style={{
           height: "auto",
           width: "auto",
@@ -49,7 +62,9 @@ export const CardProduct = ({
         {description}
       </ContainerCardDescription>
     
-        <ButtonTextCard>
+        <ButtonTextCard
+          onClick={handleBuyClick}
+        >
           <Image
             src="/shopping-bag.svg"
             alt="shopping bag"

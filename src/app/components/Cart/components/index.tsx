@@ -22,7 +22,7 @@ export const CardCartProduct = () => {
         <CardCartText>Qtd:</CardCartText>
         <CardCartQtdProduct>
             <p>-</p>
-            <p>0</p>
+            <p>1</p>
             <p>+</p>
         </CardCartQtdProduct>
       </CardCartBody>
