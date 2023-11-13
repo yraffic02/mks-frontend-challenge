@@ -1,19 +1,24 @@
-"use client"
+"use client";
+import { useProductsQuery } from "@/hook/useProduct";
 import { CardProduct } from "./components/Card";
 import { Drawer } from "./components/Cart";
 import { ContainerHome } from "./style";
-import { useGlobalContext } from "@/context/store";
 
 export default function Home() {
-  const { 
-    isDrawerOpen,
-    handleDrawerClose 
-  } = useGlobalContext();
+  const { data: products } = useProductsQuery({
+    page: 1, 
+    rows: 10, 
+    sortBy: 'id', 
+    orderBy: 'ASC', 
+  });
 
+  
+  console.log(products)
+  
   return (
     <ContainerHome>
       <CardProduct />
-      <Drawer /> 
+      <Drawer />
     </ContainerHome>
   );
 }

@@ -1,5 +1,8 @@
 'use client'
-import { ReactNode, createContext, useContext, useState } from "react";
+import { apiMks } from "@/lib/Api/mksApi";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 interface IContextProps {
   isDrawerOpen: boolean;
@@ -17,9 +20,11 @@ const GlobalContext = createContext<IContextProps>({
   handleDrawerClose: () => {},
 });
 
+const queryClient = new QueryClient();
+
 export const GlobalContextProvider = ({ children } : IReactProps) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+ 
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
   };
@@ -35,9 +40,11 @@ export const GlobalContextProvider = ({ children } : IReactProps) => {
   };
 
   return (
-    <GlobalContext.Provider value={contextValues}>
-      {children}
-    </GlobalContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <GlobalContext.Provider value={contextValues}>
+        {children}
+      </GlobalContext.Provider>
+    </QueryClientProvider>
   );
 };
 
