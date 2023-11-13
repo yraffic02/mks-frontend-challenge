@@ -21,7 +21,7 @@ export const useProductsQuery = (
       const res = await apiMks.get('/products', {
         params: { page, rows, sortBy, orderBy },
       });
-      return res.data;
+      return res.data.products;
     } catch (error) {
       throw new Error('Erro ao buscar produtos');
     }

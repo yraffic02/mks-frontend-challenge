@@ -7,30 +7,46 @@ import {
     ContainerCardTitle
 } from "./style";
 
-export const CardProduct = () => {
+export interface IProduct {
+  id: number;
+  name: string;
+  brand: string;
+  description: string;
+  photo: string;
+  price: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export const CardProduct = ({
+  name, 
+  description,
+  photo,
+  price
+}: IProduct) => {
   return (
     <ContainerCardItem>
       <Image
-        src="/items/apple-watch.jpg"
+        src={photo}
         alt="Apple Watch"
         width={0}
         height={0}
-        sizes="100vw"
+        sizes="30vw"
         style={{
           height: "auto",
           width: "auto",
-          minHeight: "70%",
-          minWidth: "70%",
+          minHeight: "50%",
+          minWidth: "50%",
         }}
       />
       <ContainerCardTitle>
-        <p>Apple Watch Series 4 GPS</p>
+        <p>{name}</p>
         <ContainerCardPrice>
-          <p>R$ 399</p>
+          <p>R$ {Number(price).toFixed(0)}</p>
         </ContainerCardPrice>
       </ContainerCardTitle>
       <ContainerCardDescription>
-        Redesigned from scratch and completely revised.
+        {description}
       </ContainerCardDescription>
     
         <ButtonTextCard>

@@ -1,23 +1,33 @@
 "use client";
 import { useProductsQuery } from "@/hook/useProduct";
-import { CardProduct } from "./components/Card";
+import { CardProduct, IProduct } from "./components/Card";
 import { Drawer } from "./components/Cart";
-import { ContainerHome } from "./style";
+import { ContainerCards, ContainerHome } from "./style";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [procutsArray, setPocutsArray] = useState<IProduct[]>([]);
   const { data: products } = useProductsQuery({
-    page: 1, 
-    rows: 10, 
-    sortBy: 'id', 
-    orderBy: 'ASC', 
+    page: 1,
+    rows: 10,
+    sortBy: "id",
+    orderBy: "ASC",
   });
 
-  
-  console.log(products)
-  
+  useEffect(() => {
+    if (products) {
+      setPocutsArray(products);
+    }
+  }, [products]);
+
+  console.log(procutsArray);
   return (
     <ContainerHome>
-      <CardProduct />
+      <ContainerCards>
+        {procutsArray?.map((item: IProduct) => {
+          return <CardProduct key={item.id} {...item} />;
+        })}
+      </ContainerCards>
       <Drawer />
     </ContainerHome>
   );
