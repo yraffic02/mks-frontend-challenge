@@ -1,13 +1,20 @@
 'use client'
 import Image from "next/image"
-import { ButtonHeader, ContainerHeader } from "./style"
+import { ButtonHeader, ContainerHeader, ContainerHeaderlogo, TextLg, TextSm } from "./style"
 import { useGlobalContext } from "@/context/store"
 
 export const Header = () =>{
     const {handleDrawerOpen} = useGlobalContext()
     return(
         <ContainerHeader>
-                <h1>oi</h1>
+                <ContainerHeaderlogo>
+                    <TextLg>
+                        MKS
+                    </TextLg>
+                    <TextSm>
+                        Sistemas
+                    </TextSm>
+                </ContainerHeaderlogo>
                 <ButtonHeader
                     onClick={handleDrawerOpen}
                 >

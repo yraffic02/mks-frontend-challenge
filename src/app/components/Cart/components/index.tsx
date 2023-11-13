@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import {
   CardCartBody,
+  CardCartButtonClose,
   CardCartContainer,
   CardCartPrice,
   CardCartQtdProduct,
@@ -9,6 +10,7 @@ import {
   CardCartTitle,
 } from "./style";
 import { IProduct } from "../../Card";
+import { useGlobalContext } from "@/context/store";
 
 export interface ICartProduct {
   id: string;
@@ -23,6 +25,7 @@ export const CardCartProduct = ({
   price,
   photo,
 }: IProduct) => {
+  const {removeFromCart} = useGlobalContext()
   const [quantity, setQuantity] = useState(1);
 
   const incrementQuantity = () => {
@@ -37,6 +40,9 @@ export const CardCartProduct = ({
 
   return (
     <CardCartContainer>
+      <CardCartButtonClose onClick={()=> removeFromCart(name)}>
+        X
+      </CardCartButtonClose>
       <Image
         src={photo}
         alt={name}

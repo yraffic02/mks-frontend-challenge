@@ -6,6 +6,7 @@ export const CardCartContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0.3rem;
+  position: relative;
 
   padding: 1.5rem;
 
@@ -53,3 +54,19 @@ export const CardCartPrice = styled.h1`
 
   color: black;
 `;
+
+export const CardCartButtonClose = styled.button`
+  all: unset;
+  padding: 0.5rem;
+  text-align: center;
+
+  font-size: 0.875rem;
+  font-weight: 400;
+
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+`
